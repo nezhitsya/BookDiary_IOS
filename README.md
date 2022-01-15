@@ -5,6 +5,7 @@
 - MVVM Pattern
 - Naver Book API를 사용해 Book 검색 기능 제공
 - CocoaPods
+- Library : SideMenu
 
 ### [Naver Book API](https://developers.naver.com/docs/search/book/)
 - 별도의 라이브러리를 사용하지 않고 API 추출 코드 구축
