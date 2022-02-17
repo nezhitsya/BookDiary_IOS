@@ -6,6 +6,9 @@ target 'Book' do
   use_frameworks!
 
 pod 'SideMenu'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
   # Pods for Book
 
