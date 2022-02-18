@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pSo-Ru-ZhN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mIN-jb-S9C">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -12,7 +12,7 @@
         <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <segue destination="E1W-9Z-VoN" kind="presentation" identifier="search" modalPresentationStyle="fullScreen" id="xSi-tF-jHb"/>
+                                            <segue destination="E1W-9Z-VoN" kind="push" identifier="search" id="xSi-tF-jHb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -136,6 +136,9 @@
                     <navigationItem key="navigationItem" title="Calendar" id="lBL-vK-TQ3">
                         <barButtonItem key="leftBarButtonItem" image="line.3.horizontal" catalog="system" id="QZy-z8-nfk">
                             <color key="tintColor" red="0.1590109468" green="0.31740865109999999" blue="0.32549381259999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="fAu-Rn-Llx" kind="show" id="xWp-vp-YaF"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -148,6 +151,41 @@
             </objects>
             <point key="canvasLocation" x="837.68115942028987" y="79.6875"/>
         </scene>
+        <!--Custom Side Menu Navigation Controller-->
+        <scene sceneID="eZN-3c-02g">
+            <objects>
+                <navigationController id="fAu-Rn-Llx" customClass="CustomSideMenuNavigationController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7zm-uL-Kxk"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h4o-qL-k8k">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="K5J-F1-whX" kind="relationship" relationship="rootViewController" id="GN4-u2-P4C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojG-QK-j3T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="777"/>
+        </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="K9p-Ci-fDA">
+            <objects>
+                <viewController id="K5J-F1-whX" customClass="SideMenuViewController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="krU-U5-f9A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8Pa-Ey-eUR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Uta-5l-Hev"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6f-Be-bYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1641" y="777"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="jnw-rS-gYf">
             <objects>
@@ -157,11 +195,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-n3-Kke">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YSs-BV-vfg">
-                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="3" id="gMx-4G-LOK">
                                     <size key="itemSize" width="128" height="128"/>
@@ -178,7 +216,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <segue destination="p0i-fA-ri3" kind="presentation" identifier="detail" modalPresentationStyle="fullScreen" id="zHA-Gg-weR"/>
+                                            <segue destination="p0i-fA-ri3" kind="push" identifier="detail" id="zHA-Gg-weR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -196,6 +234,7 @@
                             <constraint firstItem="pZX-n3-Kke" firstAttribute="trailing" secondItem="KtX-AS-yV4" secondAttribute="trailing" id="sSX-Wq-Bec"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="W3l-Gn-PIW"/>
                     <connections>
                         <outlet property="searchBar" destination="pZX-n3-Kke" id="SEE-0G-VoC"/>
                         <outlet property="searchCollectionView" destination="YSs-BV-vfg" id="mVv-Uq-Zo8"/>
@@ -222,6 +261,7 @@
                         <viewLayoutGuide key="safeArea" id="opy-33-fep"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wOF-Il-nAa"/>
                     <connections>
                         <outlet property="viewModel" destination="R8m-QH-tgh" id="R4G-bu-Mx1"/>
                     </connections>
@@ -236,10 +276,25 @@
             </objects>
             <point key="canvasLocation" x="2440.5797101449275" y="79.6875"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="v1h-vI-xZH">
+            <objects>
+                <viewController id="mIN-jb-S9C" customClass="ViewController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sad-iQ-eRO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fRf-wa-ipF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="of3-3S-cQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-796" y="80"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1na-SM-cNg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pSo-Ru-ZhN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Calendar" automaticallyAdjustsScrollViewInsets="NO" id="pSo-Ru-ZhN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vT7-Rf-pMY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

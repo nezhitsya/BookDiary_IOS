@@ -57,7 +57,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(scrollView)
         configure()
         
         viewModel.loadingStarted = { [weak self] in
@@ -88,6 +87,8 @@ class DetailViewController: UIViewController {
     }
     
     private func configure() {
+        
+        view.addSubview(scrollView)
         
         let layouts = [
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
