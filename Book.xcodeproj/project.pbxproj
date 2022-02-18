@@ -18,6 +18,7 @@
 		0B58D5CA2761C44A003C3832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B58D5C82761C44A003C3832 /* LaunchScreen.storyboard */; };
 		0B58D5D52761C60A003C3832 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58D5D32761C60A003C3832 /* CalendarCollectionViewCell.swift */; };
 		0B58D5D62761C60A003C3832 /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B58D5D42761C60A003C3832 /* CalendarCollectionViewCell.xib */; };
+		0B64FFD927BF6AD200618511 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B64FFD827BF6AD200618511 /* GoogleService-Info.plist */; };
 		0B6E907727BE5772007DEB5D /* CustomSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E907627BE5772007DEB5D /* CustomSideMenuNavigationController.swift */; };
 		0B6E907927BE58FC007DEB5D /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E907827BE58FC007DEB5D /* SideMenuViewController.swift */; };
 		0B6E907C27BE5C38007DEB5D /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E907B27BE5C38007DEB5D /* RoundImage.swift */; };
@@ -47,6 +48,7 @@
 		0B58D5CB2761C44A003C3832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B58D5D32761C60A003C3832 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B58D5D42761C60A003C3832 /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		0B64FFD827BF6AD200618511 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B6E907627BE5772007DEB5D /* CustomSideMenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		0B6E907827BE58FC007DEB5D /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		0B6E907B27BE5C38007DEB5D /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				0B58D5C32761C448003C3832 /* Main.storyboard */,
 				0B58D5C82761C44A003C3832 /* LaunchScreen.storyboard */,
 				0B58D5CB2761C44A003C3832 /* Info.plist */,
+				0B64FFD827BF6AD200618511 /* GoogleService-Info.plist */,
 				0B6E908827BE6AC6007DEB5D /* Assets.xcassets */,
 			);
 			path = Book;
@@ -271,6 +274,7 @@
 				0BF13D1127672483009CB79B /* SearchCollectionViewCell.xib in Resources */,
 				0B58D5C52761C448003C3832 /* Main.storyboard in Resources */,
 				0B6E908927BE6AC6007DEB5D /* Assets.xcassets in Resources */,
+				0B64FFD927BF6AD200618511 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
