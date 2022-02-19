@@ -9,6 +9,9 @@ import UIKit
 
 class SideMenuViewController: UIViewController {
     
+    lazy private var searchTap = UITapGestureRecognizer(target: self, action: #selector(searchClicked))
+    lazy private var calendarTap = UITapGestureRecognizer(target: self, action: #selector(calendarClicked))
+    
     private lazy var mainView: UIView = {
         let view = UIView()
         view.isAccessibilityElement = false
@@ -39,6 +42,7 @@ class SideMenuViewController: UIViewController {
         let view = UIView()
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addGestureRecognizer(calendarTap)
         view.addSubview(calendarImage)
         view.addSubview(calendarLabel)
         return view
@@ -65,6 +69,7 @@ class SideMenuViewController: UIViewController {
         let view = UIView()
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addGestureRecognizer(searchTap)
         view.addSubview(searchImage)
         view.addSubview(searchLabel)
         return view
@@ -89,7 +94,7 @@ class SideMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configure()
         
         self.profileImage.image = UIImage(named: "profile")
@@ -99,12 +104,12 @@ class SideMenuViewController: UIViewController {
         
         view.addSubview(mainView)
         
-        let layouts = [
+        NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
+
             profileImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 20),
             profileImage.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             profileImage.heightAnchor.constraint(equalToConstant: 150),
@@ -114,23 +119,34 @@ class SideMenuViewController: UIViewController {
             nicknameLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
 
             calendarView.topAnchor.constraint(equalTo: nicknameLabel.bottomAnchor, constant: 60),
-            calendarView.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 40),
+            calendarView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 40),
             calendarView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 40),
+            calendarView.heightAnchor.constraint(equalTo: calendarImage.heightAnchor),
             
             calendarImage.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor),
             
             calendarLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             
-            searchView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 60),
-            searchView.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 40),
+            searchView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 40),
+            searchView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 40),
             searchView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 40),
+            searchView.heightAnchor.constraint(equalTo: searchImage.heightAnchor),
             
             searchImage.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
             
             searchLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor)
-        ]
-        
-        layouts.forEach { $0.isActive = true }
+        ])
+    }
+    
+    @objc private func calendarClicked(_ sender: UITapGestureRecognizer) {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "Calendar")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc private func searchClicked(_ sender: UITapGestureRecognizer) {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
+        self.present(vc, animated: true, completion: nil)
     }
 
     /*
