@@ -9,8 +9,11 @@ import UIKit
 
 class SideMenuViewController: UIViewController {
     
+    @IBOutlet var viewModel: SideMenuViewModel!
+    
     lazy private var searchTap = UITapGestureRecognizer(target: self, action: #selector(searchClicked))
     lazy private var calendarTap = UITapGestureRecognizer(target: self, action: #selector(calendarClicked))
+    lazy private var nicknameTap = UITapGestureRecognizer(target: self, action: #selector(editNicknameClicked))
     
     private lazy var mainView: UIView = {
         let view = UIView()
@@ -34,7 +37,8 @@ class SideMenuViewController: UIViewController {
         let view = UILabel()
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "닉네임"
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(nicknameTap)
         return view
     }()
     
@@ -97,7 +101,12 @@ class SideMenuViewController: UIViewController {
         
         configure()
         
-        self.profileImage.image = UIImage(named: "profile")
+        viewModel.getProfile(completion: { (profile) in
+            self.nicknameLabel.text = profile.nickname
+            
+            let data: Data = try! Data(contentsOf: URL(string: profile.profileImage)!)
+            self.profileImage.image = UIImage(data: data)
+        })
     }
     
     private func configure() {
@@ -147,6 +156,22 @@ class SideMenuViewController: UIViewController {
     @objc private func searchClicked(_ sender: UITapGestureRecognizer) {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc private func editNicknameClicked(_ sender: UITapGestureRecognizer) {
+        let alertController = UIAlertController(title: "닉네임 변경", message: "닉네임을 변경해주세요.", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "닉네임"
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "저장", style: .default) { _ in
+            let inputNickname = alertController.textFields![0].text
+            self.viewModel.editNickname(nickname: inputNickname!)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
     }
 
     /*

@@ -181,8 +181,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uta-5l-Hev"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="viewModel" destination="ICZ-yI-WoQ" id="NJ2-FW-iwl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6f-Be-bYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="ICZ-yI-WoQ" customClass="SideMenuViewModel" customModule="Book" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1641" y="777"/>
         </scene>
