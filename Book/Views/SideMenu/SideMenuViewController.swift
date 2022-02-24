@@ -7,13 +7,16 @@
 
 import UIKit
 
-class SideMenuViewController: UIViewController {
+class SideMenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var viewModel: SideMenuViewModel!
+    
+    var imagePicker = UIImagePickerController()
     
     lazy private var searchTap = UITapGestureRecognizer(target: self, action: #selector(searchClicked))
     lazy private var calendarTap = UITapGestureRecognizer(target: self, action: #selector(calendarClicked))
     lazy private var nicknameTap = UITapGestureRecognizer(target: self, action: #selector(editNicknameClicked))
+    lazy private var imageTap = UITapGestureRecognizer(target: self, action: #selector(editProfileImageClicked))
     
     private lazy var mainView: UIView = {
         let view = UIView()
@@ -30,6 +33,8 @@ class SideMenuViewController: UIViewController {
         let view = UIImageView()
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(imageTap)
         return view
     }()
     
@@ -102,9 +107,9 @@ class SideMenuViewController: UIViewController {
         configure()
         
         viewModel.getProfile(completion: { (profile) in
-            self.nicknameLabel.text = profile.nickname
+            self.nicknameLabel.text = profile["nickname"] as? String
             
-            let data: Data = try! Data(contentsOf: URL(string: profile.profileImage)!)
+            let data: Data = try! Data(contentsOf: URL(string: profile["profileImage"] as! String)!)
             self.profileImage.image = UIImage(data: data)
         })
     }
@@ -172,6 +177,37 @@ class SideMenuViewController: UIViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc private func editProfileImageClicked(_ sender: UITapGestureRecognizer) {
+        let actionSheet = UIAlertController(title: "프로필 이미지",
+                                            message: "프로필 이미지 변겨",
+                                            preferredStyle: .actionSheet)
+                
+        actionSheet.addAction(UIAlertAction(title: "카메라", style: .default, handler: { _ in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = UIImagePickerController.SourceType.camera
+                self.imagePicker.allowsEditing = true
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        }))
+                
+        actionSheet.addAction(UIAlertAction(title: "사진첩", style: .default, handler: { _ in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.savedPhotosAlbum) {
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum
+                self.imagePicker.allowsEditing = true
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
+                
+        actionSheet.popoverPresentationController?.sourceView = view
+        actionSheet.popoverPresentationController?.sourceRect = view.bounds
+                
+        present(actionSheet, animated: true)
     }
 
     /*

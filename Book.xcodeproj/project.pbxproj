@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B23D9182786D19B00D29FEB /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B23D9172786D19B00D29FEB /* DetailViewModel.swift */; };
+		0B299BB527C790B700FB0BC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B299BB427C790B700FB0BC0 /* LoginViewModel.swift */; };
 		0B3F097827631712009BC7AD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F097727631712009BC7AD /* SearchViewController.swift */; };
 		0B3F097B276320C1009BC7AD /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F097A276320C1009BC7AD /* PersistencyManager.swift */; };
 		0B3F097D276320EA009BC7AD /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F097C276320EA009BC7AD /* Books.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0B23D9172786D19B00D29FEB /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		0B299BB427C790B700FB0BC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0B3F097727631712009BC7AD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B3F097A276320C1009BC7AD /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		0B3F097C276320EA009BC7AD /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				0BCBE2112769B67E003615DE /* SearchViewModel.swift */,
 				0B23D9172786D19B00D29FEB /* DetailViewModel.swift */,
 				0B71FEE527C1FF2B005BC3CE /* SideMenuViewModel.swift */,
+				0B299BB427C790B700FB0BC0 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				0B58D5BE2761C448003C3832 /* AppDelegate.swift in Sources */,
 				0BF13D1027672483009CB79B /* SearchCollectionViewCell.swift in Sources */,
 				0B58D5C02761C448003C3832 /* SceneDelegate.swift in Sources */,
+				0B299BB527C790B700FB0BC0 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

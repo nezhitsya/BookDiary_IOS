@@ -14,11 +14,10 @@ class SideMenuViewModel: NSObject {
     var users = Users.EMPTY
     var ref = Database.database().reference().child("Users")
     
-    func getProfile(completion: @escaping (Users) -> ()) {
+    func getProfile(completion: @escaping (NSDictionary) -> ()) {
         self.ref.child(userUid!).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
             let value = snapshot.value as? NSDictionary
-            self.users = Users(dictionary: value!)
-            completion(self.users)
+            completion(value!)
         }
     }
     

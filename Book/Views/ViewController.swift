@@ -14,17 +14,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Auth.auth().signInAnonymously(completion: { (user, error) in
-            if (error == nil) {
-                self.ref.child("Users").child((user?.user.uid)!).child("uid").observeSingleEvent(of: DataEventType.value, with: { (snapshot: DataSnapshot) in
-                    if (snapshot.exists()) {
-                        self.ref.child("Users").child((user?.user.uid)!).child("uid").setValue((user?.user.uid)!)
-                        self.calendarView()
-                    } else {
-                        self.calendarView()
-                    }
-                })
+        
+        LoginViewModel().login(completion: { (success) in
+            if success {
+                self.calendarView()
+            } else {
+                self.calendarView()
             }
         })
     }
