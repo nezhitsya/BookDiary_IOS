@@ -190,6 +190,21 @@
             </objects>
             <point key="canvasLocation" x="1641" y="777"/>
         </scene>
+        <!--Write View Controller-->
+        <scene sceneID="v52-jR-mLk">
+            <objects>
+                <viewController storyboardIdentifier="Write" id="52H-lT-oRg" customClass="WriteViewController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BbD-cl-XZi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3gr-C0-bcs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="McP-ys-dt9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2439" y="777"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="jnw-rS-gYf">
             <objects>
