@@ -71,7 +71,7 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail" {
             if let books = sender as? Books,
-               let detail = segue.destination as? DetailViewController {
+               let detail = segue.destination as? BookDetailViewController {
                 detail.viewModel.bookDetail = books
             }
         }

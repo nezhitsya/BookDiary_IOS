@@ -23,8 +23,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
             return
         }
         self.book = book
-
-        print(self.book)
         self.coverImage.image = nil
         ImageLoader.loadImage(url: book.image) { [weak self] image in
             self?.coverImage.image = image
