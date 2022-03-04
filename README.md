@@ -30,3 +30,18 @@
 <img width="845" src="https://user-images.githubusercontent.com/60697742/156514786-4472dd3b-a3b9-4729-afee-9667433848ae.png">
 
 - 한 줄로 표시하려는 label의 text가 그 길이를 초과하는 경우 크기에 맞추어 글꼴을 최소 크기로 축소
+
+### Date()
+
+- Android는 Date 값을 13자리 Long 타입으로 추출
+- iOS는 Date형으로 받은 값을 직접 원하는 형식으로 변환해 주어야 한다.
+
+1. 현재 시각을 Date() 함수로 받아온다.
+2. 받아온 변수에 timeIntervalSince1970 프로퍼티를 사용하여 10자릿수와 소수점 6자릿수로 구성된 값을 추출한다.
+3. Android와 마찬가지로 13자릿수로 구성하기 위해 1000을 곱한 후 Int() 형으로 변환해 나머지 3자리 소수점을 제거한다.
+
+```swift
+let time = Date()
+let timeDouble = time.timeIntervalSince1970 // 10자릿수와 소수점 6자리로 추출됨
+let timeInt = Int(timeLong * 1000) // 13자릿수로 변환하기 위해 1000을 곱하고 나머지 3자리의 소수점 제거
+```

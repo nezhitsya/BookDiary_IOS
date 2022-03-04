@@ -110,6 +110,7 @@ class BookDetailViewController: UIViewController {
                 self?.coverImage.image = image
                 
                 TextConverter.loadText(text: book.title) { bookTitle in
+                    self!.viewModel.list(title: bookTitle!.string)
                     self?.bookTitle = bookTitle!.string
                     self?.titleLabel.attributedText = bookTitle
                     self?.titleLabel.font = .boldSystemFont(ofSize: 25)
@@ -125,6 +126,13 @@ class BookDetailViewController: UIViewController {
                     self?.descriptionLabel.font = UIFont.systemFont(ofSize: 15)
                     self?.descriptionLabel.lineBreakMode = .byCharWrapping
                 }
+            }
+        }
+        
+        viewModel.commentUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.commentTable.reloadData()
+                self?.commentTable.refreshControl?.endRefreshing()
             }
         }
         
@@ -159,6 +167,11 @@ class BookDetailViewController: UIViewController {
             descriptionLabel.bottomAnchor.constraint(equalTo: writeButton.topAnchor, constant: -30),
             descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            
+            commentTable.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+            commentTable.bottomAnchor.constraint(equalTo: commentButton.topAnchor, constant: -20),
+            commentTable.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
+            commentTable.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10),
             
             commentButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
             commentButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 50),
@@ -211,6 +224,9 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentTable.dequeueReusableCell(withIdentifier: "bookdetailCell", for: indexPath) as! BookDetailTableViewCell
+        let comments = viewModel.comments(at: indexPath.row)
+        
+        cell.setComments(comments)
         
         return cell
     }

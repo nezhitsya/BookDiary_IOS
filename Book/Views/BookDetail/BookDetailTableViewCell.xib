@@ -4,20 +4,60 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookdetailCell" id="KGk-i7-Jjw" customClass="BookDetailTableViewCell" customModule="Book" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookdetailCell" rowHeight="79" id="KGk-i7-Jjw" customClass="BookDetailTableViewCell" customModule="Book" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="익명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKW-y0-eSe">
+                        <rect key="frame" x="16" y="13" width="26" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6i-oW-rYc">
+                        <rect key="frame" x="16" y="48.5" width="288" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.00. 00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-FF-sGe">
+                        <rect key="frame" x="194" y="12" width="110" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Y6i-oW-rYc" secondAttribute="trailing" constant="16" id="0O0-j3-e4i"/>
+                    <constraint firstItem="Y6i-oW-rYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CqR-B9-JKr"/>
+                    <constraint firstItem="Y6i-oW-rYc" firstAttribute="top" secondItem="gKW-y0-eSe" secondAttribute="bottom" constant="17.5" id="KrS-Ew-Mij"/>
+                    <constraint firstItem="gKW-y0-eSe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OwD-vT-EUM"/>
+                    <constraint firstItem="mMO-FF-sGe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Wqr-Wk-8RW"/>
+                    <constraint firstItem="gKW-y0-eSe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="cHt-7s-ZJ9"/>
+                    <constraint firstAttribute="bottom" secondItem="Y6i-oW-rYc" secondAttribute="bottom" constant="11" id="rx4-9Y-iB4"/>
+                    <constraint firstAttribute="trailing" secondItem="mMO-FF-sGe" secondAttribute="trailing" constant="16" id="xYU-lg-fzI"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="139" y="76"/>
+            <connections>
+                <outlet property="comment" destination="Y6i-oW-rYc" id="pQM-mC-Jze"/>
+                <outlet property="time" destination="mMO-FF-sGe" id="NuS-qC-Irs"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="63.950892857142854"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

@@ -7,13 +7,6 @@
 
 import Foundation
 
-//class dataManager {
-//    static let shared: dataManager = dataManager()
-//    var searchResult: BookList?
-//
-//    private init() { }
-//}
-
 struct BookList: Codable {
     var start: Int
     var display: Int
