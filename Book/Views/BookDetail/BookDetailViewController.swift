@@ -13,7 +13,6 @@ class BookDetailViewController: UIViewController {
     
     private var inputTopPadding: NSLayoutConstraint?
     private var isInputContainerOpened: Bool = false
-    var bookTitle = ""
     
     lazy private var commentTap = UITapGestureRecognizer(target: self, action: #selector(commentClicked))
     lazy private var writeTap = UITapGestureRecognizer(target: self, action: #selector(writeClicked))
@@ -110,8 +109,6 @@ class BookDetailViewController: UIViewController {
                 self?.coverImage.image = image
                 
                 TextConverter.loadText(text: book.title) { bookTitle in
-                    self!.viewModel.list(title: bookTitle!.string)
-                    self?.bookTitle = bookTitle!.string
                     self?.titleLabel.attributedText = bookTitle
                     self?.titleLabel.font = .boldSystemFont(ofSize: 25)
                     self?.titleLabel.textAlignment = .center
@@ -132,7 +129,6 @@ class BookDetailViewController: UIViewController {
         viewModel.commentUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.commentTable.reloadData()
-                self?.commentTable.refreshControl?.endRefreshing()
             }
         }
         
@@ -192,7 +188,7 @@ class BookDetailViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "저장", style: .default) { _ in
             let inputComment = alertController.textFields![0].text
-            self.viewModel.writeComment(title: self.bookTitle, comment: inputComment!)
+            self.viewModel.writeComment(comment: inputComment!)
         }
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)

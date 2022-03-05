@@ -12,21 +12,16 @@ class BookDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    var comments: Comments?
+    var comments: NSDictionary?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func setComments(_ comments: Comments) {
-        if let c = self.comments, c.comment == comments.comment {
-            return
-        }
-        self.comments = comments
-        self.commentLabel.text = comments.comment
-        
-        DateConverter.loadDate(date: comments.time) { time in
+    func setComments(_ comments: NSDictionary) {
+        self.commentLabel.text = comments["comment"] as? String
+        DateConverter.loadDate(date: comments["time"] as! Int) { time in
             self.timeLabel.text = time
         }
     }

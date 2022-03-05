@@ -12,10 +12,11 @@ class BookDetailViewModel: NSObject {
     
     @IBOutlet var manager: PersistencyManager!
     
+    private var bookTitle = ""
     private var books = Books.EMPTY
     var bookDetail: Books?
     
-    private var commentList: [Comments] = []
+    private var commentList: [NSDictionary] = []
     
     private var loading = false
     
@@ -28,6 +29,10 @@ class BookDetailViewModel: NSObject {
         loading = true
         loadingStarted()
         self.books = bookDetail ?? Books.EMPTY
+        TextConverter.loadText(text: books.title) { title in
+            self.bookTitle = title!.string
+        }
+        list()
         self.bookUpdated(books)
         self.loadingEnded()
     }
@@ -36,26 +41,21 @@ class BookDetailViewModel: NSObject {
         return commentList.count
     }
     
-    func comments(at index: Int) -> Comments {
+    func comments(at index: Int) -> NSDictionary {
         return commentList[index]
     }
     
-    func list(title: String) {
-        loading = true
-        loadingStarted()
-        
-        Database.database().reference().child("Comments").child(title).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
+    func list() {
+        Database.database().reference().child("Comments").child(bookTitle).observeSingleEvent(of: .value) { [self] (snapshot: DataSnapshot) in
             for dataSnapshot in snapshot.children {
-                self.commentList = ((dataSnapshot as! DataSnapshot).value as? [Comments])!
+                self.commentList.append((dataSnapshot as! DataSnapshot).value as! NSDictionary)
                 self.commentUpdated()
-                self.loadingEnded()
-                self.loading = false
             }
         }
     }
     
-    func writeComment(title: String, comment: String) {
-        let ref = Database.database().reference().child("Comments").child(title)
+    func writeComment(comment: String) {
+        let ref = Database.database().reference().child("Comments").child(bookTitle)
         let commentid: String = ref.childByAutoId().key!
         ref.child(commentid).child("comment").setValue(comment)
         
