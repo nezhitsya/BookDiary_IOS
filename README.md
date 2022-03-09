@@ -45,3 +45,9 @@ let time = Date()
 let timeDouble = time.timeIntervalSince1970 // 10자릿수와 소수점 6자리로 추출됨
 let timeInt = Int(timeLong * 1000) // 13자릿수로 변환하기 위해 1000을 곱하고 나머지 3자리의 소수점 제거
 ```
+
+### Code to place Tableview inside Scrollview
+
+- UIScrollView를 이용해 스크롤을 다 내린 후 UITableView의 스크롤을 움직이는 방식
+
+> 안드로이드에서는 recyclerview를 이용해 제한 없이 comment 확인이 가능하기 때문에 추후 방식을 더 찾아봐야 할 듯

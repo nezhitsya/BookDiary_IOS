@@ -17,10 +17,14 @@ class BookDetailViewController: UIViewController {
     lazy private var commentTap = UITapGestureRecognizer(target: self, action: #selector(commentClicked))
     lazy private var writeTap = UITapGestureRecognizer(target: self, action: #selector(writeClicked))
     
+    let screenHeight = UIScreen.main.bounds.height
+    let scrollContentHeight = 1200 as CGFloat
+    
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.bounces = false
         view.addSubview(titleLabel)
         view.addSubview(coverImage)
         view.addSubview(authorLabel)
@@ -64,6 +68,8 @@ class BookDetailViewController: UIViewController {
         let view = UITableView()
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.bounces = false
+        view.isScrollEnabled = false
         view.register(UINib(nibName: "BookDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "bookdetailCell")
         return view
     }()
@@ -95,8 +101,9 @@ class BookDetailViewController: UIViewController {
 
         configure()
         
-        commentTable.delegate = self
-        commentTable.dataSource = self
+        self.scrollView.delegate = self
+        self.commentTable.delegate = self
+        self.commentTable.dataSource = self
         
         viewModel.loadingStarted = { [weak self] in
         }
@@ -165,9 +172,9 @@ class BookDetailViewController: UIViewController {
             descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             
             commentTable.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            commentTable.bottomAnchor.constraint(equalTo: commentButton.topAnchor, constant: -20),
-            commentTable.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
-            commentTable.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10),
+            commentTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            commentTable.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            commentTable.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
             commentButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
             commentButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 50),
@@ -219,12 +226,34 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = commentTable.dequeueReusableCell(withIdentifier: "bookdetailCell", for: indexPath) as! BookDetailTableViewCell
+        let cell = self.commentTable.dequeueReusableCell(withIdentifier: "bookdetailCell", for: indexPath) as! BookDetailTableViewCell
         let comments = viewModel.comments(at: indexPath.row)
-        
+
         cell.setComments(comments)
         
         return cell
+    }
+    
+}
+
+extension BookDetailViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        
+        if scrollView == self.scrollView {
+            if yOffset >= scrollContentHeight - screenHeight {
+                scrollView.isScrollEnabled = false
+                commentTable.isScrollEnabled = true
+            }
+        }
+        
+        if scrollView == self.commentTable {
+            if yOffset <= 0 {
+                self.scrollView.isScrollEnabled = true
+                self.commentTable.isScrollEnabled = false
+            }
+        }
     }
     
 }

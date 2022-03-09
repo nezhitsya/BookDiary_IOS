@@ -49,8 +49,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="comment" destination="Y6i-oW-rYc" id="pQM-mC-Jze"/>
-                <outlet property="time" destination="mMO-FF-sGe" id="NuS-qC-Irs"/>
+                <outlet property="commentLabel" destination="Y6i-oW-rYc" id="qFF-AD-Ap8"/>
+                <outlet property="timeLabel" destination="mMO-FF-sGe" id="4kK-on-5JE"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="63.950892857142854"/>
         </tableViewCell>

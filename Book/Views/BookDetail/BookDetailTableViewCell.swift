@@ -11,8 +11,6 @@ class BookDetailTableViewCell: UITableViewCell {
     
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    var comments: NSDictionary?
 
     override func awakeFromNib() {
         super.awakeFromNib()
