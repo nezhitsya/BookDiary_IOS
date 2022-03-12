@@ -25,8 +25,17 @@ class SideMenuViewModel: NSObject {
         self.ref.child(userUid!).child("nickname").setValue(nickname)
     }
     
-    func editProfileImage() {
-        
+    func editProfileImage(data: Data) {
+        let imageStorage = Storage.storage().reference().child("profile/\(userUid!)/profileImage")
+        imageStorage.putData(data, metadata: nil) { metadata, error in
+            if (error == nil) {
+                imageStorage.downloadURL { (url, error) in
+                    if (error == nil) {
+                        self.ref.child(self.userUid!).child("profileImage").setValue(url!.absoluteString)
+                    }
+                }
+            }
+        }
     }
     
 }

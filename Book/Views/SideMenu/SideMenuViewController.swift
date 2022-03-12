@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SideMenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet var viewModel: SideMenuViewModel!
     
@@ -220,4 +220,23 @@ class SideMenuViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     */
 
+}
+
+extension SideMenuViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        setProfilePicture(imageView: self.profileImage, imageToSet: image)
+        
+        let imageData = Data()
+        viewModel.editProfileImage(data: imageData)
+    }
+    
+    internal func setProfilePicture(imageView: UIImageView, imageToSet: UIImage) {
+        imageView.layer.cornerRadius = 10.0
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.masksToBounds = true
+        imageView.image = imageToSet
+    }
+    
 }
