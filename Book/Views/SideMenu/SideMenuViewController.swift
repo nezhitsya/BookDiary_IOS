@@ -228,8 +228,10 @@ extension SideMenuViewController: UIImagePickerControllerDelegate {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         setProfilePicture(imageView: self.profileImage, imageToSet: image)
         
-        let imageData = Data()
+        var imageData = Data()
+        imageData = image.jpegData(compressionQuality: 0.8)!
         viewModel.editProfileImage(data: imageData)
+        self.dismiss(animated: true, completion: nil)
     }
     
     internal func setProfilePicture(imageView: UIImageView, imageToSet: UIImage) {

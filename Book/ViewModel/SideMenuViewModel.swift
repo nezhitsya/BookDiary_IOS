@@ -27,7 +27,10 @@ class SideMenuViewModel: NSObject {
     
     func editProfileImage(data: Data) {
         let imageStorage = Storage.storage().reference().child("profile/\(userUid!)/profileImage")
-        imageStorage.putData(data, metadata: nil) { metadata, error in
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/png"
+        
+        imageStorage.putData(data, metadata: metaData) { metadata, error in
             if (error == nil) {
                 imageStorage.downloadURL { (url, error) in
                     if (error == nil) {

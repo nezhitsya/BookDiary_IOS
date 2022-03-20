@@ -10,16 +10,18 @@ import Firebase
 
 class ViewController: UIViewController {
     
+    @IBOutlet var viewModel: LoginViewModel!
+    
     var ref = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        LoginViewModel().login(completion: { (success) in
+        viewModel.login(completion: { (success) in
             if success {
                 self.calendarView()
             } else {
-                self.calendarView()
+//                self.calendarView()
             }
         })
     }
