@@ -46,6 +46,17 @@ let timeDouble = time.timeIntervalSince1970 // 10자릿수와 소수점 6자리�
 let timeInt = Int(timeLong * 1000) // 13자릿수로 변환하기 위해 1000을 곱하고 나머지 3자리의 소수점 제거
 ```
 
+- Long 타입 Date 값을 원하는 형식으로 변환
+
+```swift
+let dateFormatter = DateFormatter()
+dateFormatter.dateFormat = "yy.MM.dd HH:mm:ss"
+dateFormatter.locale = Locale(identifier:"ko_KR")
+
+let dateInterval = Date(timeIntervalSince1970: TimeInterval(date / 1000)) // 13자릿수로 변환하기 위해 1000을 곱했기 때문에 1000을 나누어 변환
+let convertDate = dateFormatter.string(from: dateInterval)
+```
+
 ### Code to place Tableview inside Scrollview
 
 - UIScrollView를 이용해 스크롤을 다 내린 후 UITableView의 스크롤을 움직이는 방식

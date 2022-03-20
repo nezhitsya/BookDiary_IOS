@@ -181,7 +181,7 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc private func editProfileImageClicked(_ sender: UITapGestureRecognizer) {
         let actionSheet = UIAlertController(title: "프로필 이미지",
-                                            message: "프로필 이미지 변겨",
+                                            message: "프로필 이미지 변경",
                                             preferredStyle: .actionSheet)
                 
         actionSheet.addAction(UIAlertAction(title: "카메라", style: .default, handler: { _ in

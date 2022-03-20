@@ -18,7 +18,7 @@ class BookDetailViewController: UIViewController {
     lazy private var writeTap = UITapGestureRecognizer(target: self, action: #selector(writeClicked))
     
     let screenHeight = UIScreen.main.bounds.height
-    let scrollContentHeight = 1200 as CGFloat
+    let scrollContentHeight = 1500 as CGFloat
     
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -30,8 +30,8 @@ class BookDetailViewController: UIViewController {
         view.addSubview(authorLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(commentTable)
-        view.addSubview(writeButton)
         view.addSubview(commentButton)
+        view.addSubview(writeButton)
         return view
     }()
     
@@ -69,7 +69,7 @@ class BookDetailViewController: UIViewController {
         view.isAccessibilityElement = false
         view.translatesAutoresizingMaskIntoConstraints = false
         view.bounces = false
-        view.isScrollEnabled = false
+        view.isScrollEnabled = true
         view.register(UINib(nibName: "BookDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "bookdetailCell")
         return view
     }()
@@ -167,18 +167,19 @@ class BookDetailViewController: UIViewController {
             coverImage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
             descriptionLabel.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 10),
-            descriptionLabel.bottomAnchor.constraint(equalTo: writeButton.topAnchor, constant: -30),
+            descriptionLabel.bottomAnchor.constraint(equalTo: commentTable.topAnchor, constant: -30),
             descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             
             commentTable.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            commentTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            commentTable.heightAnchor.constraint(equalToConstant: 500),
+            commentTable.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60),
             commentTable.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             commentTable.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            
+
             commentButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
             commentButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 50),
-            
+
             writeButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
             writeButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -50)
         ]

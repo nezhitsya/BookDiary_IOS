@@ -15,7 +15,7 @@ class DateConverter {
         dateFormatter.dateFormat = "yy.MM.dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier:"ko_KR")
         
-        let dateInterval = Date(timeIntervalSinceNow: TimeInterval(date))
+        let dateInterval = Date(timeIntervalSince1970: TimeInterval(date / 1000))
         let convertDate = dateFormatter.string(from: dateInterval)
         
         return completed(convertDate)

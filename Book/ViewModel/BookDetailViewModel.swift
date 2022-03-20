@@ -46,6 +46,7 @@ class BookDetailViewModel: NSObject {
     }
     
     func list() {
+        commentList.removeAll()
         Database.database().reference().child("Comments").child(bookTitle).observeSingleEvent(of: .value) { [self] (snapshot: DataSnapshot) in
             for dataSnapshot in snapshot.children {
                 self.commentList.append((dataSnapshot as! DataSnapshot).value as! NSDictionary)
@@ -62,5 +63,7 @@ class BookDetailViewModel: NSObject {
         let time = Date()
         let timeLong = time.timeIntervalSince1970
         ref.child(commentid).child("time").setValue(Int(timeLong * 1000))
+        
+        list()
     }
 }
