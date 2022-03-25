@@ -8,6 +8,8 @@
 import UIKit
 
 class WriteViewController: UIViewController {
+    
+    @IBOutlet var viewModel: WriteViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()

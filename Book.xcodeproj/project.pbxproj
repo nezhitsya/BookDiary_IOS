@@ -14,6 +14,7 @@
 		0B3F097827631712009BC7AD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F097727631712009BC7AD /* SearchViewController.swift */; };
 		0B3F097B276320C1009BC7AD /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F097A276320C1009BC7AD /* PersistencyManager.swift */; };
 		0B3F097D276320EA009BC7AD /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F097C276320EA009BC7AD /* Books.swift */; };
+		0B50097327EDFB6F00B1D0A0 /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B50097227EDFB6F00B1D0A0 /* WriteViewModel.swift */; };
 		0B58D5BE2761C448003C3832 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58D5BD2761C448003C3832 /* AppDelegate.swift */; };
 		0B58D5C02761C448003C3832 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58D5BF2761C448003C3832 /* SceneDelegate.swift */; };
 		0B58D5C22761C448003C3832 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58D5C12761C448003C3832 /* CalendarViewController.swift */; };
@@ -50,6 +51,7 @@
 		0B3F097727631712009BC7AD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B3F097A276320C1009BC7AD /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		0B3F097C276320EA009BC7AD /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
+		0B50097227EDFB6F00B1D0A0 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
 		0B58D5BA2761C448003C3832 /* Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Book.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B58D5BD2761C448003C3832 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B58D5BF2761C448003C3832 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				0B23D9172786D19B00D29FEB /* BookDetailViewModel.swift */,
 				0B71FEE527C1FF2B005BC3CE /* SideMenuViewModel.swift */,
 				0B299BB427C790B700FB0BC0 /* LoginViewModel.swift */,
+				0B50097227EDFB6F00B1D0A0 /* WriteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				0B8E638E27BE37BA00EC950A /* ViewController.swift in Sources */,
 				0BCBE2122769B67E003615DE /* SearchViewModel.swift in Sources */,
 				0B3F097827631712009BC7AD /* SearchViewController.swift in Sources */,
+				0B50097327EDFB6F00B1D0A0 /* WriteViewModel.swift in Sources */,
 				0B6E907C27BE5C38007DEB5D /* RoundImage.swift in Sources */,
 				0B3F097B276320C1009BC7AD /* PersistencyManager.swift in Sources */,
 				0BBEC0BC2775A6280008D2B0 /* BookDetailViewController.swift in Sources */,
