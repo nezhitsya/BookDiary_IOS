@@ -20,7 +20,7 @@ class CalendarViewController: UIViewController {
     var days: [String] = []
     var daysCountInMonth = 0 // 해당 월이 며칠까지 있는 지
     var weekdayStart = 0 // 시작일
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,6 +118,14 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DispatchQueue.main.async { [self] in
+            NotificationCenter.default.post(name: .date,
+                                            object: nil,
+                                            userInfo: ["year": components.year!,
+                                                       "month": components.month!,
+                                                       "day": Int(days[indexPath.row])!])
+        }
+
         performSegue(withIdentifier: "search", sender: nil)
     }
     

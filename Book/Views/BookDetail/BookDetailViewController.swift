@@ -204,6 +204,13 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc func writeClicked(_ sender: UITapGestureRecognizer) {
+        DispatchQueue.main.async { [self] in
+            NotificationCenter.default.post(name: .bookInfo,
+                                            object: nil,
+                                            userInfo: ["title": viewModel.bookDetail!.title,
+                                                       "image": viewModel.bookDetail!.image])
+        }
+        
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "Write")
         self.present(vc, animated: true, completion: nil)
     }
