@@ -160,7 +160,7 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc private func searchClicked(_ sender: UITapGestureRecognizer) {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func editNicknameClicked(_ sender: UITapGestureRecognizer) {

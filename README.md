@@ -62,3 +62,86 @@ let convertDate = dateFormatter.string(from: dateInterval)
 - UIScrollView를 이용해 스크롤을 다 내린 후 UITableView의 스크롤을 움직이는 방식
 
 > 안드로이드에서는 recyclerview를 이용해 제한 없이 comment 확인이 가능하기 때문에 추후 방식을 더 찾아봐야 할 듯
+
+### 화면 간 데이터 전달 방법
+
+1. 프로퍼티에 직접 접근하는 방식
+
+```swift
+let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
+vc.searchTitle = "검색화면"
+self.navigationController?.pushViewController(vc, animated: true)
+```
+
+2. segue를 이용한 전달 방식
+
+```swift
+if segue.identifier == "search" {
+    if let search = segue.destination as? SearchViewController {
+        search.searchTitle = "상세정보 화면"
+    }
+}
+```
+
+3. delegate 패턴을 이용한 방식
+
+> 프로토콜 생성 -> 프로토콜 채택 -> 위임 (delegate)
+
+```swift
+protocol SendDataDelegate {
+    func recieveData(response : String)
+}
+
+class SearchViewController: UIViewController {
+    var delegate : SendDataDelegate?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        delegate?.recieveData(response: text)
+    }
+}
+
+----------------------------------
+
+class NextViewController: UIViewController, SendDataDelegate {
+    func recieveData(response: String) {
+        titleLabel.text = response
+    }
+}
+```
+
+4. closure를 이용한 방식
+
+```swift
+var completioHandler : ((String) -> (Void))?
+completioHandler?(data ?? "")
+
+----------------------------------
+
+let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
+vc.completioHandler = { data in
+    self.titleLabel = data
+}
+```
+
+5. NotificationCenter와 Observer pattern을 이용한 방식
+
+```swift
+extension Notification.Name {
+    static let titleInfo = Notification.Name("titleInfo")
+}
+
+----------------------------------
+
+NotificationCenter.default.post(name: .titleInfo,
+                                object: nil,
+                                userInfo: ["title": title,
+                                           "desc": desc])
+
+----------------------------------
+
+guard let notificationUserInfo = notification.titleInfo as? [String: String] else { return }
+```
+
+> ❗️ Observer가 메모리 상에 올라와 있어야 수신되는 형태로 post하는 controller에서 observer가 있는 controller로 **pushController**를 수행하면 데이터 전달 불가능
