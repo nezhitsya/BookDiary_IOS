@@ -212,6 +212,7 @@ class BookDetailViewController: UIViewController {
         }
         
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "Write")
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
 

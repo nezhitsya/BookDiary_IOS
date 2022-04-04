@@ -11,7 +11,15 @@ class WriteViewController: UIViewController {
     
     @IBOutlet var viewModel: WriteViewModel!
     @IBOutlet var saveBtn: UIButton!
+    @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var descTextView: UITextView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var coverImage: UIImageView!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var start1: UIImageView!
+    @IBOutlet var start2: UIImageView!
+    @IBOutlet var start3: UIImageView!
+    
     var yearData: Int = 0
     var monthData: Int = 0
     var dayData: Int = 0
@@ -21,23 +29,25 @@ class WriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: .date, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(booknotificationReceived(_:)), name: .bookInfo, object: nil)
-    }
-    
-    @objc func notificationReceived(_ notification: Notification) {
-        guard let notificationUserInfo = notification.userInfo as? [String: Int] else { return }
+        self.yearData = UserDefaults.standard.value(forKey: "year") as! Int
+        self.monthData = UserDefaults.standard.value(forKey: "month") as! Int
+        self.dayData = UserDefaults.standard.value(forKey: "day") as! Int
         
-        self.yearData = notificationUserInfo["year"]!
-        self.monthData = notificationUserInfo["month"]!
-        self.dayData = notificationUserInfo["day"]!
+        NotificationCenter.default.addObserver(self, selector: #selector(booknotificationReceived(_:)), name: .bookInfo, object: nil)
     }
     
     @objc func booknotificationReceived(_ notification: Notification) {
         guard let notificationUserInfo = notification.userInfo as? [String: String] else { return }
         
-        self.titleData = notificationUserInfo["title"]!
-        self.imageData = notificationUserInfo["image"]!
+        TextConverter.loadText(text: notificationUserInfo["title"]!) { bookTitle in
+            self.titleLabel.attributedText = bookTitle
+            self.titleLabel.font = .boldSystemFont(ofSize: 25)
+            self.titleLabel.textAlignment = .center
+            self.titleLabel.adjustsFontSizeToFitWidth = true
+        }
+        
+        let data: Data = try! Data(contentsOf: URL(string: notificationUserInfo["image"]!)!)
+        self.coverImage.image = UIImage(data: data)
     }
 
     /*
@@ -52,6 +62,10 @@ class WriteViewController: UIViewController {
     
     @IBAction func saveClicked(_ sender: UIButton) {
 //        self.viewModel.write(title: <#T##String#>, image: <#T##String#>, desc: <#T##String#>, year: <#T##Int#>, month: <#T##Int#>, day: <#T##Int#>)
+    }
+    
+    @IBAction func cancelClicked(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

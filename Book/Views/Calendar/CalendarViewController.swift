@@ -118,13 +118,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        DispatchQueue.main.async { [self] in
-            NotificationCenter.default.post(name: .date,
-                                            object: nil,
-                                            userInfo: ["year": components.year!,
-                                                       "month": components.month!,
-                                                       "day": Int(days[indexPath.row])!])
-        }
+        UserDefaults.standard.set(components.year!, forKey: "year")
+        UserDefaults.standard.set(components.month!, forKey: "month")
+        UserDefaults.standard.set(Int(days[indexPath.row])!, forKey: "day")
 
         performSegue(withIdentifier: "search", sender: nil)
     }
