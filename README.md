@@ -145,3 +145,14 @@ guard let notificationUserInfo = notification.titleInfo as? [String: String] els
 ```
 
 > ❗️ Observer가 메모리 상에 올라와 있어야 수신되는 형태로 post하는 controller에서 observer가 있는 controller로 **pushController**를 수행하면 데이터 전달 불가능
+
+### userDefaults
+
+- 데이터 저장소
+- 사용자 기본 설정과 같은 단일 데이터 값 저장에 적합 (대량 데이터는 sqlite DB 등 사용이 적합)
+- [데이터, 키(key)] 형태로 데이터 저장
+
+```swift
+UserDefaults.standard.set(components.year!, forKey: "year") // 값 저장하기
+let year = UserDefaults.standard.value(forKey: "year") as! Int // 값 가져오기
+```
