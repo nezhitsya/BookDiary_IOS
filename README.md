@@ -156,3 +156,18 @@ guard let notificationUserInfo = notification.titleInfo as? [String: String] els
 UserDefaults.standard.set(components.year!, forKey: "year") // 값 저장하기
 let year = UserDefaults.standard.value(forKey: "year") as! Int // 값 가져오기
 ```
+
+### DatePicker
+
+- DatePicker의 날짜를 커스텀 지정하는 방법
+
+```swift
+let calendar: NSCalendar = NSCalendar.current as NSCalendar
+var components = calendar.components([NSCalendar.Unit.year, NSCalendar.Unit.month, NSCalendar.Unit.day], from: NSDate() as Date)
+components.year = yearData
+components.month = monthData
+components.day = dayData
+self.datePicker.setDate(calendar.date(from: components)!, animated: true)
+```
+
+> 시간을 변경하고 싶으면 year -> hour / month -> minute
