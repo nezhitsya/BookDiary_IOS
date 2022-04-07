@@ -145,10 +145,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendar" destination="9wZ-4n-RNX" id="ugw-mb-Anv"/>
+                        <outlet property="viewModel" destination="0LJ-ua-OP4" id="Mh3-I5-KKr"/>
                         <outlet property="yearMonthLabel" destination="WNM-xL-b21" id="syw-1z-FrN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="0LJ-ua-OP4" customClass="CalendarViewModel" customModule="Book" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="837.68115942028987" y="79.6875"/>
         </scene>

@@ -9,6 +9,7 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
+    @IBOutlet var viewModel: CalendarViewModel!
     @IBOutlet weak var calendar: UICollectionView!
     @IBOutlet weak var yearMonthLabel: UILabel!
     

@@ -111,6 +111,7 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
             
             let data: Data = try! Data(contentsOf: URL(string: profile["profileImage"] as! String)!)
             self.profileImage.image = UIImage(data: data)
+            self.profileImage.setRounded()
         })
     }
     
@@ -159,6 +160,13 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc private func searchClicked(_ sender: UITapGestureRecognizer) {
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        UserDefaults.standard.set(components.year, forKey: "year")
+        UserDefaults.standard.set(components.month!, forKey: "month")
+        UserDefaults.standard.set(components.day, forKey: "day")
+        
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
         self.navigationController?.pushViewController(vc, animated: true)
     }

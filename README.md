@@ -25,6 +25,32 @@
 4. ViewModel은 응답받은 데이터를 가공해서 저장
 5. View는 ViewModel과의 Data Binding을 통해서 자동으로 갱신
 
+### MVVM - Storyboard
+
+- ViewModel을 Storyboard의 ViewController에 채택하여 MVVM 패턴 구현
+
+1. ViewModel을 연결할 ViewController에 Object 삽입
+
+<img width="671" src="https://user-images.githubusercontent.com/60697742/162213210-f0267ada-ab52-4317-aa36-acae1591a46d.png">
+
+삽입된 Object의 모습
+
+<img width="615" src="https://user-images.githubusercontent.com/60697742/162213606-a08c335a-e305-42b8-a210-ed3cafd474b1.png">
+
+2. Object에 ViewModel 클래스 지정
+
+<img width="840" src="https://user-images.githubusercontent.com/60697742/162213630-f03abd35-9703-47d9-87a3-63077c7976a8.png">
+
+3. ViewController에 ViewModel을 IBOutlet으로 선언
+
+```swift
+@IBOutlet var viewModel: WriteViewModel!
+```
+
+4. Outlet과 Object 연결
+
+<img width="840" src="https://user-images.githubusercontent.com/60697742/162213645-d5c29021-6b90-4142-85d4-9850b3993239.png">
+
 ### adjustsFontSizeToFitWidth
 
 <img width="845" src="https://user-images.githubusercontent.com/60697742/156514786-4472dd3b-a3b9-4729-afee-9667433848ae.png">
