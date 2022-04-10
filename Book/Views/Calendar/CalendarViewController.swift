@@ -34,6 +34,21 @@ class CalendarViewController: UIViewController {
         components.month = cal.component(.month, from: now)
         components.day = 1
         
+        viewModel.loadingStarted = { [weak self] in
+        }
+        
+        viewModel.loadingEnded = { [weak self] in
+        }
+        
+        viewModel.diaryListUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.calendar.reloadData()
+            }
+        }
+        
+        viewModel.list()
+        
+        self.calendar.reloadData()
         self.calculation()
     }
 
@@ -114,6 +129,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 //        }
         
         cell.dateText(text: days[indexPath.row])
+        cell.setImage(diary: viewModel.diaryList, year: components.year!, month: components.month!, day: cell.dateLabel.text ?? "")
         
         return cell
     }

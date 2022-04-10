@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0611BF280134120048742F /* MyDiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0611BD280134120048742F /* MyDiaryTableViewCell.swift */; };
+		0B0611C0280134120048742F /* MyDiaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B0611BE280134120048742F /* MyDiaryTableViewCell.xib */; };
+		0B0611C2280134250048742F /* MyDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0611C1280134250048742F /* MyDiaryViewController.swift */; };
 		0B18D20727D0A35C00B5BE1F /* BookDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B18D20527D0A35C00B5BE1F /* BookDetailTableViewCell.swift */; };
 		0B18D20827D0A35C00B5BE1F /* BookDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B18D20627D0A35C00B5BE1F /* BookDetailTableViewCell.xib */; };
 		0B23D9182786D19B00D29FEB /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B23D9172786D19B00D29FEB /* BookDetailViewModel.swift */; };
@@ -47,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0611BD280134120048742F /* MyDiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryTableViewCell.swift; sourceTree = "<group>"; };
+		0B0611BE280134120048742F /* MyDiaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDiaryTableViewCell.xib; sourceTree = "<group>"; };
+		0B0611C1280134250048742F /* MyDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryViewController.swift; sourceTree = "<group>"; };
 		0B18D20527D0A35C00B5BE1F /* BookDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0B18D20627D0A35C00B5BE1F /* BookDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailTableViewCell.xib; sourceTree = "<group>"; };
 		0B23D9172786D19B00D29FEB /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
@@ -109,6 +115,16 @@
 				F32771E3F0A427CD49823E46 /* Pods-Book.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		0B0611BC280133F70048742F /* MyDiary */ = {
+			isa = PBXGroup;
+			children = (
+				0B0611C1280134250048742F /* MyDiaryViewController.swift */,
+				0B0611BD280134120048742F /* MyDiaryTableViewCell.swift */,
+				0B0611BE280134120048742F /* MyDiaryTableViewCell.xib */,
+			);
+			path = MyDiary;
 			sourceTree = "<group>";
 		};
 		0B18D20427D0A04F00B5BE1F /* BookDetail */ = {
@@ -174,6 +190,7 @@
 		0B58D5D12761C5D2003C3832 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B0611BC280133F70048742F /* MyDiary */,
 				0B18D20427D0A04F00B5BE1F /* BookDetail */,
 				0B6E907527BE5763007DEB5D /* SideMenu */,
 				0BF13D0B2767243F009CB79B /* Search */,
@@ -324,6 +341,7 @@
 				0B58D5D62761C60A003C3832 /* CalendarCollectionViewCell.xib in Resources */,
 				0B58D5CA2761C44A003C3832 /* LaunchScreen.storyboard in Resources */,
 				0BF13D1127672483009CB79B /* SearchCollectionViewCell.xib in Resources */,
+				0B0611C0280134120048742F /* MyDiaryTableViewCell.xib in Resources */,
 				0B58D5C52761C448003C3832 /* Main.storyboard in Resources */,
 				0B6E908927BE6AC6007DEB5D /* Assets.xcassets in Resources */,
 				0B18D20827D0A35C00B5BE1F /* BookDetailTableViewCell.xib in Resources */,
@@ -389,6 +407,7 @@
 				0B3F097B276320C1009BC7AD /* PersistencyManager.swift in Sources */,
 				0BF3610F27FDCE2600333C1C /* Diary.swift in Sources */,
 				0BBEC0BC2775A6280008D2B0 /* BookDetailViewController.swift in Sources */,
+				0B0611C2280134250048742F /* MyDiaryViewController.swift in Sources */,
 				0B71FEE627C1FF2B005BC3CE /* SideMenuViewModel.swift in Sources */,
 				0B58D5D52761C60A003C3832 /* CalendarCollectionViewCell.swift in Sources */,
 				0BCBE2062769A8D9003615DE /* BookList.swift in Sources */,
@@ -405,6 +424,7 @@
 				0B23D9182786D19B00D29FEB /* BookDetailViewModel.swift in Sources */,
 				0B58D5BE2761C448003C3832 /* AppDelegate.swift in Sources */,
 				0BF13D1027672483009CB79B /* SearchCollectionViewCell.swift in Sources */,
+				0B0611BF280134120048742F /* MyDiaryTableViewCell.swift in Sources */,
 				0B58D5C02761C448003C3832 /* SceneDelegate.swift in Sources */,
 				0B299BB527C790B700FB0BC0 /* LoginViewModel.swift in Sources */,
 				0BF3611127FDCF4A00333C1C /* CalendarViewModel.swift in Sources */,

@@ -12,7 +12,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateImage: UIImageView!
     
-    var diary: Diary?
+    var diary: [NSDictionary]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +23,17 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         dateLabel.text = text
     }
     
-    func setImage(_ diary: Diary) {
-        ImageLoader.loadImage(url: diary.image) { [weak self] image in
-            self?.dateImage.image = image
+    func setImage(diary: [NSDictionary], year: Int, month: Int, day: String) {
+        if !diary.isEmpty {
+            for i in 0..<diary.count {
+                if diary[i]["year"] as! Int == year && diary[i]["month"] as! Int == month && diary[i]["day"] as! Int == Int(day) {
+                    ImageLoader.loadImage(url: diary[i]["image"] as! String) { [weak self] image in
+                        self?.dateImage.image = image
+                    }
+                } else {
+                    self.dateImage.image = nil
+                }
+            }
         }
     }
 

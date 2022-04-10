@@ -25,5 +25,5 @@ struct Diary: Codable {
 }
 
 extension Diary {
-    static let EMPTY = Diary(image: "", year: 0, month: 0, day: 0)
+    static let EMPTY = Diary(image: "", year: 2022, month: 4, day: 20)
 }

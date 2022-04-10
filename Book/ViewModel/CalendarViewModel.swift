@@ -6,7 +6,32 @@
 //
 
 import Foundation
+import Firebase
 
 class CalendarViewModel: NSObject {
+    
+    let userUid = Auth.auth().currentUser?.uid
+    var ref = Database.database().reference().child("Diary")
+    var diaryList: [NSDictionary] = []
+    private var loading = false
+    
+    var loadingStarted: () -> Void = { }
+    var loadingEnded: () -> Void = { }
+    var diaryListUpdated: () -> Void = { }
+    
+    func list() {
+        loading = true
+        loadingStarted()
+        
+        Database.database().reference().child("Diary").child(userUid!).observeSingleEvent(of: .value) { [self] (snapshot: DataSnapshot) in
+            for dataSnapshot in snapshot.children {
+                self.diaryList.append((dataSnapshot as! DataSnapshot).value as! NSDictionary)
+                self.diaryListUpdated()
+                self.loadingEnded()
+                self.loading = false
+            }
+        }
+        
+    }
     
 }
