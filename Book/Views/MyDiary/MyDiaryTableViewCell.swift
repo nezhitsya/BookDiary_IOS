@@ -8,16 +8,27 @@
 import UIKit
 
 class MyDiaryTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var coverImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setDiary(_ diaries: NSDictionary) {
+        self.titleLabel.text = diaries["title"] as? String
+        self.descLabel.text = diaries["desc"] as? String
+        
+        DateConverter.loadDate(date: diaries["time"] as! Int) { time in
+            self.dateLabel.text = time
+        }
+        
+        ImageLoader.loadImage(url: diaries["image"] as! String) { [weak self] image in
+            self?.coverImage.image = image
+        }
     }
     
 }

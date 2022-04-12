@@ -15,6 +15,7 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
     
     lazy private var searchTap = UITapGestureRecognizer(target: self, action: #selector(searchClicked))
     lazy private var calendarTap = UITapGestureRecognizer(target: self, action: #selector(calendarClicked))
+    lazy private var diaryTap = UITapGestureRecognizer(target: self, action: #selector(diaryClicked))
     lazy private var nicknameTap = UITapGestureRecognizer(target: self, action: #selector(editNicknameClicked))
     lazy private var imageTap = UITapGestureRecognizer(target: self, action: #selector(editProfileImageClicked))
     
@@ -26,6 +27,7 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
         view.addSubview(nicknameLabel)
         view.addSubview(calendarView)
         view.addSubview(searchView)
+        view.addSubview(diaryView)
         return view
     }()
     
@@ -100,6 +102,33 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
         view.textColor = .black
         return view
     }()
+    
+    private lazy var diaryView: UIView = {
+        let view = UIView()
+        view.isAccessibilityElement = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addGestureRecognizer(diaryTap)
+        view.addSubview(diaryImage)
+        view.addSubview(diaryLabel)
+        return view
+    }()
+    
+    private lazy var diaryImage: UIImageView = {
+        let view = UIImageView()
+        view.isAccessibilityElement = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = UIImage(named: "search")
+        return view
+    }()
+    
+    private lazy var diaryLabel: UILabel = {
+        let view = UILabel()
+        view.isAccessibilityElement = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "나의 독후감"
+        view.textColor = .black
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +159,7 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
             profileImage.heightAnchor.constraint(equalToConstant: 150),
             profileImage.widthAnchor.constraint(equalToConstant: 150),
             
-            nicknameLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 10),
+            nicknameLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 20),
             nicknameLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
 
             calendarView.topAnchor.constraint(equalTo: nicknameLabel.bottomAnchor, constant: 60),
@@ -149,7 +178,16 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
             
             searchImage.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
             
-            searchLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor)
+            searchLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+            
+            diaryView.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 40),
+            diaryView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 40),
+            diaryView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 40),
+            diaryView.heightAnchor.constraint(equalTo: diaryImage.heightAnchor),
+            
+            diaryImage.leadingAnchor.constraint(equalTo: diaryView.leadingAnchor),
+            
+            diaryLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor)
         ])
     }
     
@@ -168,6 +206,11 @@ class SideMenuViewController: UIViewController, UINavigationControllerDelegate {
         UserDefaults.standard.set(components.day, forKey: "day")
         
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "Search")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func diaryClicked(_ sender: UITapGestureRecognizer) {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "Diary")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

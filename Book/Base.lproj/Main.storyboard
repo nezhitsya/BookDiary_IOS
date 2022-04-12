@@ -350,7 +350,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="McP-ys-dt9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="zo0-c6-dg3" customClass="WriteViewModel" customModule="Book" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2437.68115942029" y="776.78571428571422"/>
+            <point key="canvasLocation" x="2439" y="777"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="jnw-rS-gYf">
@@ -479,7 +479,66 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="79.6875"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NJt-GF-VXv">
+            <objects>
+                <navigationController id="vXS-bN-m4Y" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gcr-Zd-xgH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cyp-in-gXG" kind="relationship" relationship="rootViewController" id="9qW-H4-uHE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffZ-b7-unc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="1470"/>
+        </scene>
+        <!--나의 독후감-->
+        <scene sceneID="14v-BD-J9O">
+            <objects>
+                <viewController storyboardIdentifier="Diary" id="cyp-in-gXG" customClass="MyDiaryViewController" customModule="Book" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4XJ-Pf-C5l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LhL-pb-B9h">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uIE-IA-DmM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LhL-pb-B9h" firstAttribute="leading" secondItem="uIE-IA-DmM" secondAttribute="leading" id="2ND-Dh-W5M"/>
+                            <constraint firstItem="LhL-pb-B9h" firstAttribute="trailing" secondItem="uIE-IA-DmM" secondAttribute="trailing" id="NkI-WH-Bo5"/>
+                            <constraint firstItem="LhL-pb-B9h" firstAttribute="top" secondItem="uIE-IA-DmM" secondAttribute="top" id="fgM-bZ-pt0"/>
+                            <constraint firstItem="LhL-pb-B9h" firstAttribute="bottom" secondItem="uIE-IA-DmM" secondAttribute="bottom" id="s79-oi-QEz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="나의 독후감" id="qxR-nO-IxS">
+                        <barButtonItem key="leftBarButtonItem" image="line.3.horizontal" catalog="system" id="xq5-TG-Phx">
+                            <color key="tintColor" name="colorGreen"/>
+                            <connections>
+                                <segue destination="fAu-Rn-Llx" kind="show" id="rAf-bg-ukU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="LhL-pb-B9h" id="YZt-it-sIP"/>
+                        <outlet property="viewModel" destination="SiF-sU-xD9" id="eGF-GX-Miu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vku-vM-701" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="SiF-sU-xD9" customClass="CalendarViewModel" customModule="Book" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="837.68115942028987" y="1469.8660714285713"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rAf-bg-ukU"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>

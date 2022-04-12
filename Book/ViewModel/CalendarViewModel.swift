@@ -19,6 +19,14 @@ class CalendarViewModel: NSObject {
     var loadingEnded: () -> Void = { }
     var diaryListUpdated: () -> Void = { }
     
+    func diaryCount() -> Int {
+        return diaryList.count
+    }
+    
+    func diaries(at index: Int) -> NSDictionary {
+        return diaryList[index]
+    }
+    
     func list() {
         loading = true
         loadingStarted()

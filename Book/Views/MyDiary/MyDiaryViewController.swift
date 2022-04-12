@@ -8,11 +8,19 @@
 import UIKit
 
 class MyDiaryViewController: UIViewController {
+    
+    @IBOutlet var viewModel: CalendarViewModel!
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        viewModel.list()
+        
+        tableView.reloadData()
     }
     
 
@@ -26,4 +34,21 @@ class MyDiaryViewController: UIViewController {
     }
     */
 
+}
+
+extension MyDiaryViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.diaryCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "DiaryList", for: indexPath) as! MyDiaryTableViewCell
+        let diaries = viewModel.diaries(at: indexPath.row)
+
+        cell.setDiary(diaries)
+        
+        return cell
+    }
+    
 }
