@@ -31,7 +31,7 @@ class CalendarViewModel: NSObject {
         loading = true
         loadingStarted()
         
-        Database.database().reference().child("Diary").child(userUid!).observeSingleEvent(of: .value) { [self] (snapshot: DataSnapshot) in
+        ref.child(userUid!).observeSingleEvent(of: .value) { [self] (snapshot: DataSnapshot) in
             for dataSnapshot in snapshot.children {
                 self.diaryList.append((dataSnapshot as! DataSnapshot).value as! NSDictionary)
                 self.diaryListUpdated()
@@ -39,7 +39,6 @@ class CalendarViewModel: NSObject {
                 self.loading = false
             }
         }
-        
     }
     
 }

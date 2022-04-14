@@ -21,10 +21,7 @@ class MyDiaryTableViewCell: UITableViewCell {
     func setDiary(_ diaries: NSDictionary) {
         self.titleLabel.text = diaries["title"] as? String
         self.descLabel.text = diaries["desc"] as? String
-        
-        DateConverter.loadDate(date: diaries["time"] as! Int) { time in
-            self.dateLabel.text = time
-        }
+        self.dateLabel.text = "\(String(describing: diaries["year"]!))년 \(String(describing: diaries["month"]!))월 \(String(describing: diaries["day"]!))일"
         
         ImageLoader.loadImage(url: diaries["image"] as! String) { [weak self] image in
             self?.coverImage.image = image

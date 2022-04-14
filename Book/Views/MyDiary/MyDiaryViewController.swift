@@ -17,10 +17,21 @@ class MyDiaryViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: "MyDiaryTableViewCell", bundle: nil), forCellReuseIdentifier: "DiaryList")
+        
+        viewModel.loadingStarted = { [weak self] in
+        }
+        
+        viewModel.loadingEnded = { [weak self] in
+        }
+        
+        viewModel.diaryListUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
         
         viewModel.list()
-        
-        tableView.reloadData()
     }
     
 
@@ -49,6 +60,16 @@ extension MyDiaryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setDiary(diaries)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+        }
     }
     
 }
