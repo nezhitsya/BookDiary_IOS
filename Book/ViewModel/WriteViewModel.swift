@@ -23,6 +23,7 @@ class WriteViewModel: NSObject {
         ref.child(userUid!).child(diaryid).child("month").setValue(month)
         ref.child(userUid!).child(diaryid).child("day").setValue(day)
         ref.child(userUid!).child(diaryid).child("score").setValue(score)
+        ref.child(userUid!).child(diaryid).child("diaryid").setValue(diaryid)
     }
     
 }

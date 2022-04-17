@@ -13,20 +13,23 @@ struct Diary: Codable {
     let month: Int
     let day: Int
     let desc: String
+    let diaryid: String
     
     init(image: String,
          year: Int,
          month: Int,
          day: Int,
-         desc: String) {
+         desc: String,
+         diaryid: String) {
         self.image = image
         self.year = year
         self.month = month
         self.day = day
         self.desc = desc
+        self.diaryid = diaryid
     }
 }
 
 extension Diary {
-    static let EMPTY = Diary(image: "", year: 2022, month: 4, day: 20, desc: "")
+    static let EMPTY = Diary(image: "", year: 2022, month: 4, day: 20, desc: "", diaryid: "")
 }

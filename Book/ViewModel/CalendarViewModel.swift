@@ -28,6 +28,7 @@ class CalendarViewModel: NSObject {
     }
     
     func list() {
+        diaryList.removeAll()
         loading = true
         loadingStarted()
         
@@ -39,6 +40,10 @@ class CalendarViewModel: NSObject {
                 self.loading = false
             }
         }
+    }
+    
+    func deleteDiary(at index: Int) {
+        ref.child(userUid!).child(diaryList[index]["diaryid"] as! String).removeValue()
     }
     
 }
